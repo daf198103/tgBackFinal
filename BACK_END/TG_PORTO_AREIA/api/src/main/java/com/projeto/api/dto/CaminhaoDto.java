@@ -9,7 +9,7 @@ public class CaminhaoDto  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	private Integer id;
+
 	private String placaDoCavalo;
 	private String cidadePlaca;
 	private String estadoPlaca;
@@ -18,12 +18,14 @@ public class CaminhaoDto  implements Serializable{
 	private String nomeEmpresa;
 	private BigDecimal pesoTotalBruto;
 	private BigDecimal tara;
+	private boolean carregado;
 	
 	
-	public CaminhaoDto(Integer id, String placaCavalo, String cidadePlaca, String estadoPlaca,
-			String tipoCam, String nomeMotorista, String empresa, BigDecimal pesoBruto, BigDecimal tara ) 
+	
+	public CaminhaoDto(String placaCavalo, String cidadePlaca, String estadoPlaca,
+			String tipoCam, String nomeMotorista, String empresa, BigDecimal pesoBruto, BigDecimal tara, boolean carregado ) 
 	{
-		this.id = id;
+
 		this.placaDoCavalo = placaCavalo;
 		this.cidadePlaca = cidadePlaca;
 		this.estadoPlaca = estadoPlaca;
@@ -32,16 +34,7 @@ public class CaminhaoDto  implements Serializable{
 		this.nomeEmpresa = empresa;
 		this.pesoTotalBruto = pesoBruto;
 		this.tara = tara;
-	}
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
+		this.carregado = carregado;
 	}
 
 
@@ -123,6 +116,18 @@ public class CaminhaoDto  implements Serializable{
 	public void setTara(BigDecimal tara) {
 		this.tara = tara;
 	}
+
+
+	public boolean isCarregado() {
+		return carregado;
+	}
+
+
+	public void setCarregado(boolean carregado) {
+		this.carregado = carregado;
+	}
+	
+	
 
 
 	

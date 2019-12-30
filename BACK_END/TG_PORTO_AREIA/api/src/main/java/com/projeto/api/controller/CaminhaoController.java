@@ -41,14 +41,16 @@ public class CaminhaoController {
 	@PostMapping(value="/caminhao/save")
 	public ResponseEntity<Caminhao>save(@RequestBody Caminhao caminhao){
 		Caminhao cami = caminhaoService.findByPlacaDoCavalo(caminhao.getPlacaDoCavalo());
-		if(!cami.equals(null)) {
-			cami.setCarregado(caminhao.isCarregado());
-			caminhaoService.save(cami);
-			return new ResponseEntity<Caminhao>(cami,new HttpHeaders(),HttpStatus.OK);
-
+		//!caminhaoService.findByPlacaDoCavalo(camn.getPlacaDoCavalo()).equals(null)
+		if(null == cami) {
+			caminhaoService.save(caminhao);
+			return new ResponseEntity<Caminhao>(caminhao,new HttpHeaders(),HttpStatus.OK);
 		}
-		caminhaoService.save(caminhao);
-		return new ResponseEntity<Caminhao>(caminhao,new HttpHeaders(),HttpStatus.OK);
+		
+		cami.setCarregado(caminhao.isCarregado());
+		caminhaoService.save(cami);
+		return new ResponseEntity<Caminhao>(cami,new HttpHeaders(),HttpStatus.OK);
+		
 	}
 	
 	
@@ -68,62 +70,6 @@ public class CaminhaoController {
 	      return new ResponseEntity<Caminhao>(caminhao, HttpStatus.OK); 
 	  }	
 
-//	@PutMapping(value="/caminhao/update")
-//	public ResponseEntity<Caminhao>update(@RequestBody Caminhao caminhao){
-//		Caminhao cami = caminhaoService.findByPlacaDoCavalo(caminhao.getPlacaDoCavalo());
-//		cami.setCarregado(caminhao.isCarregado());
-//		caminhaoService.save(cami);
-//		return new ResponseEntity<Caminhao>(caminhao,new HttpHeaders(),HttpStatus.OK);
-//	}
-
-
-
-
-
 
 }
-	
-//	
-//	
-//	
-//	
-//	@PostMapping(value = "/caminhao/save")//, method = RequestMethod.POST
-//    public ResponseEntity<Caminhao>save(@RequestBody Caminhao caminhao) 
-//    {
-//    	Caminhao camin = caminhaoService.findByPlacaDoCavalo(caminhao.getPlacaDoCavalo());
-//    	if(camin == null) {
-//    		caminhaoService.save(caminhao);	
-//    		return new ResponseEntity<Caminhao>(caminhao, new  HttpHeaders(),HttpStatus.OK);
-//    	}else
-//    	{
-//    		return new ResponseEntity<Caminhao>(camin, new  HttpHeaders(),HttpStatus.OK);	
-//    	}
-//    	    
-//    }
-//	
-//	@PutMapping(value = "/caminhao/update")//, method = RequestMethod.POST
-//    public ResponseEntity<Caminhao>update(@RequestBody Caminhao caminhao) 
-//    {
-//    	Caminhao camin = caminhaoService.findByPlacaDoCavalo(caminhao.getPlacaDoCavalo());
-//    	//camin.setCargaMaxima(caminhao.getCargaMaxima());
-//    	caminhaoService.save(camin);	
-//    	return new ResponseEntity<Caminhao>(caminhao, new  HttpHeaders(),HttpStatus.OK);
-//    	    
-//    }
-//	
-//	
-//	
-//	
-
-//	@RequestMapping(value="/nomeEmpresa/{nomeEmpresa}")
-//	public ResponseEntity<List<Caminhao>> findByNomeEmpresa(
-//			@PathVariable("nomeEmpresa")String nomeEmpresa)
-//	{
-//		List<Caminhao>caminhao = caminhaoService.findByNomeEmpresa(nomeEmpresa);
-//		if(caminhao.size() == 0) 
-//		{
-//			return null;
-//		}
-//		return new ResponseEntity<List<Caminhao>>(caminhao,HttpStatus.OK);
-//	}
 	

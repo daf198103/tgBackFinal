@@ -20,7 +20,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="CRG_CRREGAMENTO")
+@Table(name="CRG_CARREGAMENTO")
 public class Carregamento implements Serializable{
 	
 	
